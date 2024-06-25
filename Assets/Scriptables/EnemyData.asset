@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc4c5c2a9745f94baf3b4dfeceb1781, type: 3}
+  m_Name: EnemyData
+  m_EditorClassIdentifier: 
+  frontFOVAngle: 157.2
+  frontFOVDistance: 22.66
+  frontFOVColor: {r: 1, g: 0, b: 0, a: 1}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  checkInterval: 1
+  attackRange: 0
