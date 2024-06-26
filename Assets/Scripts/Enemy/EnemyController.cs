@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private Animator animator; // Add the Animator field
     public EnemyData enemyData;
     private RaycastHit raycastHitInfo;
     [SerializeField] private Transform player;
@@ -18,8 +19,10 @@ public class EnemyController : MonoBehaviour
     private int currentPatrolIndex;
     [SerializeField] private bool isChasingPlayer;
     private bool isRotating;
+    private bool wasAttack;
     private Vector3 lastPlayerPosition;
     private Coroutine agroCoroutine; // Reference to the running Agro coroutine
+    [SerializeField] private float minDistanceToAttack = 2.0f; // Minimum distance to attack
 
     void Start()
     {
@@ -34,8 +37,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (wasAttack) return;
         DrawFrontFOV();
         HandlePatrolAndChase();
+        UpdateAnimator();
+        CheckAttack();
     }
 
     void HandlePatrolAndChase()
@@ -50,12 +56,13 @@ public class EnemyController : MonoBehaviour
 
         if (FindPlayer())
         {
-            isChasingPlayer = true;
+          
             lastPlayerPosition = GetPlayerPosition();
             navMeshAgent.SetDestination(lastPlayerPosition);
         }
         else if (isChasingPlayer && !navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
+            
             StartCoroutine(WaitAtLastPlayerPosition());
         }
     }
@@ -83,7 +90,7 @@ public class EnemyController : MonoBehaviour
         yield return RotateTo(rightRotation, 1f); // Rotate over 1 second
         yield return new WaitForSeconds(2f);
 
-        isChasingPlayer = false;
+       
         isRotating = false;
         MoveToNextPatrolPoint();
     }
@@ -109,7 +116,7 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(agroCoroutine);
         }
-        isChasingPlayer = true;
+      
         navMeshAgent.SetDestination(point);
         agroCoroutine = StartCoroutine(CheckArrivalAndLookAround());
     }
@@ -143,16 +150,17 @@ public class EnemyController : MonoBehaviour
         yield return RotateTo(rightRotation, 1f); // Rotate over 1 second
         yield return new WaitForSeconds(2f);
 
-        isChasingPlayer = false;
+      
         isRotating = false;
         MoveToNextPatrolPoint();
     }
 
     public bool FindPlayer()
     {
-        if(PlayerController.Instance.isHide)
+        if (PlayerController.Instance.isHide)
         {
             PlayerController.Instance.RemoveChase(this);
+            isChasingPlayer = false;
             return false;
         }
 
@@ -160,12 +168,15 @@ public class EnemyController : MonoBehaviour
         {
             navMeshAgent.SetDestination(player.position);
             PlayerController.Instance.AddChase(this);
+            isChasingPlayer = true;
             return true;
         }
         else
         {
             PlayerController.Instance.RemoveChase(this);
+            isChasingPlayer = false;
         }
+        isChasingPlayer = false;
         return false;
     }
 
@@ -312,6 +323,27 @@ public class EnemyController : MonoBehaviour
 
             Gizmos.DrawSphere(currentPoint, 0.3f);
             Gizmos.DrawLine(currentPoint, nextPoint);
+        }
+    }
+
+    // Method to update the Animator based on the NavMeshAgent's velocity
+    void UpdateAnimator()
+    {
+        float velocity = navMeshAgent.velocity.magnitude;
+        animator.SetFloat("Velocity", velocity > 0.1f ? 1f : 0f); // Set "Velocity" to 1 for walking, 0 for idle
+    }
+
+
+    // Method to check if the enemy is close enough to attack
+    void CheckAttack()
+    {
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= minDistanceToAttack && FindPlayer() && !wasAttack)
+        {
+            wasAttack = true;
+
+            animator.SetTrigger("Attack");
         }
     }
 }
