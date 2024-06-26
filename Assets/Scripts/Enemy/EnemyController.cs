@@ -342,7 +342,7 @@ public class EnemyController : MonoBehaviour
         if (distanceToPlayer <= minDistanceToAttack && FindPlayer() && !wasAttack)
         {
             wasAttack = true;
-
+            PlayerController.Instance.GameOver();
             animator.SetTrigger("Attack");
         }
     }
