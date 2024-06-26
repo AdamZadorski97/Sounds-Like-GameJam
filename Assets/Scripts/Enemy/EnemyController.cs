@@ -150,6 +150,12 @@ public class EnemyController : MonoBehaviour
 
     public bool FindPlayer()
     {
+        if(PlayerController.Instance.isHide)
+        {
+            PlayerController.Instance.RemoveChase(this);
+            return false;
+        }
+
         if (IsPlayerVisibleInFrontFOV(player.position))
         {
             navMeshAgent.SetDestination(player.position);

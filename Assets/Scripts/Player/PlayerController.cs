@@ -8,6 +8,13 @@ public class PlayerController : MonoBehaviour
     private static PlayerController _instance;
 
     // Public property to access the instance
+
+    public bool isHide;
+
+
+
+
+
     public static PlayerController Instance
     {
         get
@@ -87,5 +94,11 @@ public class PlayerController : MonoBehaviour
         {
             isChasedByEnemy.Remove(enemyController);
         }
+    }
+
+
+    public void HidePlayer(bool state)
+    {
+        isHide = state;
     }
 }
