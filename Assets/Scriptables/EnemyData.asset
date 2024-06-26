@@ -17,9 +17,9 @@ MonoBehaviour:
   frontFOVColor: {r: 1, g: 0, b: 0, a: 1}
   playerLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 512
   wallLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2048
   checkInterval: 1
   attackRange: 0

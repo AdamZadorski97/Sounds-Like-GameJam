@@ -31,7 +31,7 @@ EditorBuildSettings:
     WebXR.Settings: {fileID: 11400000, guid: fe9659bb224bb054bb1dbca065d1d318, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 7c0d65f8139523c47a3ac0b1587ccdf6,
       type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: bc87842975b39e54c9a8257bb65aef55,
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 574cc7f8f95e60a48aea6c7cc2a4c72a,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: dd4dec1a966aea84995d94cdf51ee981,
       type: 2}
