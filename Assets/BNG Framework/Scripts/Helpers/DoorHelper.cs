@@ -153,7 +153,7 @@ namespace BNG
 
             JointLimits limits = hinge.limits;
             limits.min = 90;  // Adjust this value based on your door's hinge settings
-            limits.max = 0;    // Adjust this value based on your door's hinge settings
+            limits.max = -90;    // Adjust this value based on your door's hinge settings
             hinge.limits = limits;
 
             rigid.isKinematic = false;
