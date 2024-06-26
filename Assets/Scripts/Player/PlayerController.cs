@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             if (!isChase)
             {
                 isChase = true;
-                HeartBeatController.Instance.SetBlinkInterval(1);
+                HeartBeatController.Instance.SetBlinkInterval(true);
                 MusicController.Instance.ChangeMusicByName("Chase");
             }
         }
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
             if (isChase)
             {
                 isChase = false;
-                HeartBeatController.Instance.SetBlinkInterval(3);
+                HeartBeatController.Instance.SetBlinkInterval(false);
                 MusicController.Instance.ChangeMusicByName("Calm");
             }
         }
