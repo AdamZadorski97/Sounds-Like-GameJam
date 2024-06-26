@@ -1819,6 +1819,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isChasedByEnemy: []
+--- !u!114 &977291085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977291055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0352cbaa619dee540ab719939becea0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepSounds:
+  - {fileID: 8300000, guid: 13070ba4d90a2924db8a96425e64b6c4, type: 3}
+  - {fileID: 8300000, guid: 33b3438711da08f43bf8017a14728fb3, type: 3}
+  - {fileID: 8300000, guid: d1d7cbe8f0997864da4ea3d10efea745, type: 3}
+  - {fileID: 8300000, guid: 27807dc362bbd1e43b1ec95ab1bc8350, type: 3}
+  - {fileID: 8300000, guid: 12a5cc36c56756e499db8ec10caa5db5, type: 3}
+  - {fileID: 8300000, guid: 13f8bbc7fdf633a44ae7b098206683b8, type: 3}
+  - {fileID: 8300000, guid: 43bd2694f6ecce1489d0149ffab965b4, type: 3}
+  - {fileID: 8300000, guid: 1489989fea602b84cba38876acfd2020, type: 3}
+  - {fileID: 8300000, guid: 0f5df53e097a1df43a1306327e43e5bf, type: 3}
+  - {fileID: 8300000, guid: cfee7eee99f654b41a8454e29bef7f63, type: 3}
+  - {fileID: 8300000, guid: dc726526b5424e144a6c31a0c6d89786, type: 3}
+  - {fileID: 8300000, guid: 646d099b55429e940877c6fe4ae0dd19, type: 3}
+  - {fileID: 8300000, guid: db0093471bf920e4e9cb7717dc084ae4, type: 3}
+  - {fileID: 8300000, guid: 4b0027d3fb441ab47998e2fab55c3370, type: 3}
+  - {fileID: 8300000, guid: eafb13574a7bd3a49841337f4e193313, type: 3}
+  - {fileID: 8300000, guid: dab1e57bb5163d74f91d1bb3566f6023, type: 3}
+  - {fileID: 8300000, guid: 3a07df2349dc92b47b107d7b0936c321, type: 3}
+  - {fileID: 8300000, guid: 442140d80fd14a247a423309a559fa76, type: 3}
+  - {fileID: 8300000, guid: d7714a322d04dcb45aeda13888fa5750, type: 3}
+  - {fileID: 8300000, guid: 384aa1d4b9873af49b1348b50c9d467f, type: 3}
+  minVelocity: 0.1
+  stepInterval: 0.3
 --- !u!1 &981744891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2242,6 +2277,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 977291070}
+    - targetCorrespondingSourceObject: {fileID: 2093207351254691191, guid: 4ac7df741a9c0a2418ec19477729ee3d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 977291085}
     - targetCorrespondingSourceObject: {fileID: 5885571433683049865, guid: 4ac7df741a9c0a2418ec19477729ee3d,
         type: 3}
       insertIndex: -1
