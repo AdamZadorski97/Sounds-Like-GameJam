@@ -24,9 +24,12 @@ public class EnemyController : MonoBehaviour
     private Coroutine agroCoroutine; // Reference to the running Agro coroutine
     [SerializeField] private float minDistanceToAttack = 2.0f; // Minimum distance to attack
 
+    private ShootController shootController; // Reference to the ShootController
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        shootController = GetComponent<ShootController>();
 
         if (patrolPoints != null && patrolPoints.Count > 0)
         {
@@ -56,13 +59,12 @@ public class EnemyController : MonoBehaviour
 
         if (FindPlayer())
         {
-          
             lastPlayerPosition = GetPlayerPosition();
             navMeshAgent.SetDestination(lastPlayerPosition);
+            shootController.StartShooting(); // Start shooting when chasing the player
         }
         else if (isChasingPlayer && !navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
-            
             StartCoroutine(WaitAtLastPlayerPosition());
         }
     }
@@ -90,7 +92,6 @@ public class EnemyController : MonoBehaviour
         yield return RotateTo(rightRotation, 1f); // Rotate over 1 second
         yield return new WaitForSeconds(2f);
 
-       
         isRotating = false;
         MoveToNextPatrolPoint();
     }
@@ -116,7 +117,7 @@ public class EnemyController : MonoBehaviour
         {
             StopCoroutine(agroCoroutine);
         }
-      
+
         navMeshAgent.SetDestination(point);
         agroCoroutine = StartCoroutine(CheckArrivalAndLookAround());
     }
@@ -150,7 +151,6 @@ public class EnemyController : MonoBehaviour
         yield return RotateTo(rightRotation, 1f); // Rotate over 1 second
         yield return new WaitForSeconds(2f);
 
-      
         isRotating = false;
         MoveToNextPatrolPoint();
     }
@@ -161,6 +161,7 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController.Instance.RemoveChase(this);
             isChasingPlayer = false;
+            shootController.StopShooting(); // Stop shooting when not chasing the player
             return false;
         }
 
@@ -175,8 +176,10 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController.Instance.RemoveChase(this);
             isChasingPlayer = false;
+            shootController.StopShooting(); // Stop shooting when not chasing the player
         }
         isChasingPlayer = false;
+        shootController.StopShooting(); // Stop shooting when not chasing the player
         return false;
     }
 
@@ -333,7 +336,6 @@ public class EnemyController : MonoBehaviour
         animator.SetFloat("Velocity", velocity > 0.1f ? 1f : 0f); // Set "Velocity" to 1 for walking, 0 for idle
     }
 
-
     // Method to check if the enemy is close enough to attack
     void CheckAttack()
     {
@@ -342,7 +344,10 @@ public class EnemyController : MonoBehaviour
         if (distanceToPlayer <= minDistanceToAttack && FindPlayer() && !wasAttack)
         {
             wasAttack = true;
-            PlayerController.Instance.GameOver();
+            GetComponent<NavMeshAgent>().enabled = false;
+       //     GetComponent<CharacterController>().enabled = false;
+           
+            PlayerController.Instance.GameOver(transform.position);
             animator.SetTrigger("Attack");
         }
     }
