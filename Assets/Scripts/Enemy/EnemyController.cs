@@ -17,7 +17,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private List<Transform> patrolPoints;
     private int currentPatrolIndex;
     [SerializeField] private bool isChasingPlayer;
+    private bool isRotating;
     private Vector3 lastPlayerPosition;
+    private Coroutine agroCoroutine; // Reference to the running Agro coroutine
 
     void Start()
     {
@@ -38,6 +40,9 @@ public class EnemyController : MonoBehaviour
 
     void HandlePatrolAndChase()
     {
+        if (isRotating)
+            return;
+
         if (!isChasingPlayer && !navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.5f)
         {
             MoveToNextPatrolPoint();
@@ -66,15 +71,20 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator WaitAtLastPlayerPosition()
     {
+        isRotating = true;
+
         // Rotate 90 degrees left
         Quaternion leftRotation = Quaternion.Euler(0, transform.eulerAngles.y - 90, 0);
         yield return RotateTo(leftRotation, 1f); // Rotate over 1 second
         yield return new WaitForSeconds(2f);
+
         // Rotate 180 degrees right
         Quaternion rightRotation = Quaternion.Euler(0, transform.eulerAngles.y + 180, 0);
         yield return RotateTo(rightRotation, 1f); // Rotate over 1 second
+        yield return new WaitForSeconds(2f);
 
         isChasingPlayer = false;
+        isRotating = false;
         MoveToNextPatrolPoint();
     }
 
@@ -95,10 +105,13 @@ public class EnemyController : MonoBehaviour
 
     public void Agro(Vector3 point)
     {
-        StopCoroutine(WaitAtLastPlayerPosition()); // Stop the wait coroutine if it's running
+        if (agroCoroutine != null)
+        {
+            StopCoroutine(agroCoroutine);
+        }
         isChasingPlayer = true;
         navMeshAgent.SetDestination(point);
-        StartCoroutine(CheckArrivalAndLookAround());
+        agroCoroutine = StartCoroutine(CheckArrivalAndLookAround());
     }
 
     IEnumerator CheckArrivalAndLookAround()
@@ -113,11 +126,13 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(LookAroundAfterAgro());
+        agroCoroutine = StartCoroutine(LookAroundAfterAgro());
     }
 
     IEnumerator LookAroundAfterAgro()
     {
+        isRotating = true;
+
         // Rotate 90 degrees left
         Quaternion leftRotation = Quaternion.Euler(0, transform.eulerAngles.y - 90, 0);
         yield return RotateTo(leftRotation, 1f); // Rotate over 1 second
@@ -129,6 +144,7 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         isChasingPlayer = false;
+        isRotating = false;
         MoveToNextPatrolPoint();
     }
 
