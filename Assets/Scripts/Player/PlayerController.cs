@@ -46,16 +46,26 @@ public class PlayerController : MonoBehaviour
     {
         HeartBeatControl();
     }
-
+    private bool isChase;
     public void HeartBeatControl()
     {
         if (CheckIsEnemyChase())
         {
-            HeartBeatController.Instance.SetBlinkInterval(1);
+            if (!isChase)
+            {
+                isChase = true;
+                HeartBeatController.Instance.SetBlinkInterval(1);
+                MusicController.Instance.ChangeMusicByName("Chase");
+            }
         }
         else
         {
-            HeartBeatController.Instance.SetBlinkInterval(3);
+            if (isChase)
+            {
+                isChase = false;
+                HeartBeatController.Instance.SetBlinkInterval(3);
+                MusicController.Instance.ChangeMusicByName("Calm");
+            }
         }
     }
 

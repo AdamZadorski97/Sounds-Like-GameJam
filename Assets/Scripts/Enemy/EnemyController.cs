@@ -181,7 +181,7 @@ public class EnemyController : MonoBehaviour
             // Cast a ray to check for direct line of sight, ignoring specified layers
             if (Physics.Raycast(rayOrigin, directionToPosition, out raycastHitInfo, enemyData.frontFOVDistance, ~ignoreLayers))
             {
-                Debug.Log(raycastHitInfo.collider.gameObject.name);
+                //Debug.Log(raycastHitInfo.collider.gameObject.name);
                 // Check if the hit object is the player and no other object is in between
                 if (raycastHitInfo.transform == player)
                 {

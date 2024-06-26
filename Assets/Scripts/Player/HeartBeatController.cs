@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Collections;
 
 public class HeartBeatController : MonoBehaviour
 {
@@ -9,6 +8,9 @@ public class HeartBeatController : MonoBehaviour
 
     public GameObject heartbeatUI;
     public TextMeshProUGUI intervalText;
+    public AudioClip clip1Second;
+    public AudioClip clip3Seconds;
+    private AudioSource audioSource;
 
     private float blinkTimer;
     private float currentBlinkInterval;
@@ -28,9 +30,12 @@ public class HeartBeatController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
     private void Start()
     {
-        SetBlinkInterval(1);
+        // Initialize the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        SetBlinkInterval(3);
     }
 
     // Method to set the blink interval.
@@ -38,6 +43,19 @@ public class HeartBeatController : MonoBehaviour
     {
         currentBlinkInterval = blinkInterval;
         intervalText.text = $"Interval: {blinkInterval:F2} seconds";
+
+        // Change the audio clip based on the interval
+        if (blinkInterval == 1f)
+        {
+            audioSource.clip = clip1Second;
+        }
+        else if (blinkInterval == 3f)
+        {
+            audioSource.clip = clip3Seconds;
+        }
+
+        // Play the audio clip in a loop
+        PlayAudio();
     }
 
     private void Update()
@@ -55,6 +73,16 @@ public class HeartBeatController : MonoBehaviour
                 heartbeatUI.SetActive(!heartbeatUI.activeSelf);
             }
             blinkTimer = 0f;
+        }
+    }
+
+    // Method to play the audio clip in a loop
+    void PlayAudio()
+    {
+        if (audioSource.clip != null)
+        {
+            audioSource.loop = true;
+            audioSource.Play();
         }
     }
 }

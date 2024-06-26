@@ -25,7 +25,11 @@ public class TriggerSystem : MonoBehaviour
         if (other.GetComponent<PlayerController>())
             onPlayerTriggerEnter.Invoke();
         if (other.GetComponent<EnemyController>())
+        {
+            Debug.Log("Enemy Trigger");
             onEnemyTriggerEnter.Invoke();
+        }
+        
     }
 
     public void OnTriggerExit(Collider other)
