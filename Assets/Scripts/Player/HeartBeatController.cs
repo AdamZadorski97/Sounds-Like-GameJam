@@ -15,7 +15,7 @@ public class HeartBeatController : MonoBehaviour
     public AudioClip clip3Seconds;
     public Color fastBeatColor = Color.red;
     public Color slowBeatColor = Color.blue;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private float fastBeat;
     [SerializeField] private float slowBeat;
     private float blinkTimer;
@@ -43,8 +43,6 @@ public class HeartBeatController : MonoBehaviour
 
     private void Start()
     {
-        // Initialize the audio source
-        audioSource = gameObject.AddComponent<AudioSource>();
         canvasGroup = heartbeatUI.GetComponent<CanvasGroup>();
 
         if (canvasGroup == null)
@@ -55,11 +53,13 @@ public class HeartBeatController : MonoBehaviour
         SetBlinkInterval(false);
     }
 
+
     // Method to set the blink interval.
     public void SetBlinkInterval(bool isFast)
-    {
+    { 
         Debug.Log("Blink interval" + isFast);
-        if (isFast)
+       
+            if (isFast)
         {
             currentBlinkInterval = fastBeat;
             audioSource.clip = clip1Second;
@@ -84,8 +84,11 @@ public class HeartBeatController : MonoBehaviour
     // Method to play the audio clip in a loop
     void PlayAudio()
     {
+        
+
         if (audioSource.clip != null)
         {
+            
             audioSource.loop = true;
             audioSource.Play();
         }

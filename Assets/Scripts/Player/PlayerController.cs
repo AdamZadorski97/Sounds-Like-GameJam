@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,8 +17,13 @@ public class PlayerController : MonoBehaviour
     public CanvasGroup gameOverScreen;
     public AudioSource audioSource;
     public AudioClip screamClip;
+    public AudioClip getDamageClip;
+    [SerializeField] private float lookAtDuration = 1.0f;
+    [SerializeField] private Transform cameraRotation;
+    [SerializeField] private List<Image> healthImages; // List of images representing health points
 
-
+    private int currentHealthIndex;
+    public CheckSpell checkSpell;
     public static PlayerController Instance
     {
         get
@@ -51,12 +57,28 @@ public class PlayerController : MonoBehaviour
             DontDestroyOnLoad(gameObject); // Optional: If you want the singleton to persist across scenes
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.gameObject.name);
+        // Check if the object the wand collided with is a projectile
+        ProjectileController projectile = collision.gameObject.GetComponent<ProjectileController>();
+        if (projectile != null)
+        {
+            TakeDamage(1);
+        }
+    }
+    private void Start()
+    {
+        currentHealthIndex = healthImages.Count - 1; // Initialize the health index
+    }
 
     private void Update()
     {
         HeartBeatControl();
     }
+
     private bool isChase;
+
     public void HeartBeatControl()
     {
         if (CheckIsEnemyChase())
@@ -91,6 +113,7 @@ public class PlayerController : MonoBehaviour
             isChasedByEnemy.Add(enemyController);
         }
     }
+
     public void RemoveChase(EnemyController enemyController)
     {
         if (isChasedByEnemy.Contains(enemyController))
@@ -99,20 +122,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damageAmount)
+    {
+        audioSource.PlayOneShot(getDamageClip);
+        if (currentHealthIndex >= 0)
+        {
+            healthImages[currentHealthIndex].gameObject.SetActive(false);
+            currentHealthIndex--;
+
+            if (currentHealthIndex < 0)
+            {
+                GameOver(transform.position); // Call GameOver when health is depleted
+            }
+        }
+    }
 
     public void HidePlayer(bool state)
     {
         isHide = state;
     }
 
-    public void GameOver()
+    public void GameOver(Vector3 vector3)
     {
-        GetComponent<BNGPlayerController>().enabled = false;
+        audioSource = GetComponent<AudioSource>();
+        GetComponent<CharacterController>().enabled = false;
         Sequence sequence = DOTween.Sequence();
-        sequence.AppendInterval(2f); // Wait for 1 second
+        sequence.AppendInterval(2f); // Wait for 2 seconds
         sequence.Append(gameOverScreen.DOFade(1, 0.8f)); // Then fade
         sequence.Play();
+        StartCoroutine(LerpLookAt(vector3));
+        audioSource.PlayOneShot(screamClip, 1);
+    }
 
-        audioSource.PlayOneShot(screamClip);
+    private IEnumerator LerpLookAt(Vector3 targetPosition)
+    {
+        Vector3 direction = targetPosition - cameraRotation.position;
+        direction.y = 0; // Ignore the Y axis to only rotate on the horizontal plane
+
+        Quaternion startRotation = cameraRotation.rotation;
+        Quaternion endRotation = Quaternion.LookRotation(direction);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < lookAtDuration)
+        {
+            cameraRotation.rotation = Quaternion.Lerp(startRotation, endRotation, elapsedTime / lookAtDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        cameraRotation.rotation = endRotation; // Ensure it ends exactly at the target rotation
     }
 }
