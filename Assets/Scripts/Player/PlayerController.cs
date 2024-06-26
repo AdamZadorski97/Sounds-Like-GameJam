@@ -1,3 +1,5 @@
+using BNG;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +13,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isHide;
 
-
-
+    public CanvasGroup gameOverScreen;
+    public AudioSource audioSource;
+    public AudioClip screamClip;
 
 
     public static PlayerController Instance
@@ -100,5 +103,16 @@ public class PlayerController : MonoBehaviour
     public void HidePlayer(bool state)
     {
         isHide = state;
+    }
+
+    public void GameOver()
+    {
+        GetComponent<BNGPlayerController>().enabled = false;
+        Sequence sequence = DOTween.Sequence();
+        sequence.AppendInterval(2f); // Wait for 1 second
+        sequence.Append(gameOverScreen.DOFade(1, 0.8f)); // Then fade
+        sequence.Play();
+
+        audioSource.PlayOneShot(screamClip);
     }
 }
