@@ -52,16 +52,7 @@ namespace BNG
         {
             AngularVelocity = rigid.angularVelocity.magnitude;
             currentRotation = transform.localEulerAngles;
-            angle = Mathf.Floor(currentRotation.y);
-
-            if (angle >= 180)
-            {
-                angle -= 180;
-            }
-            else
-            {
-                angle = 180 - angle;
-            }
+            angle = GetDoorAngle();
 
             if (angle > 10 && !playedOpenSound)
             {
@@ -134,6 +125,15 @@ namespace BNG
             }
         }
 
+        float GetDoorAngle()
+        {
+            Vector3 doorForward = transform.forward;
+            Vector3 parentForward = transform.parent ? transform.parent.forward : Vector3.forward;
+
+            float angle = Vector3.SignedAngle(parentForward, doorForward, Vector3.up);
+            return Mathf.Abs(angle);
+        }
+
         public void OpenDoor()
         {
             Debug.Log("Open door");
@@ -147,12 +147,12 @@ namespace BNG
             JointSpring spring = hinge.spring;
             spring.spring = 10f;  // Adjust the spring force value as needed
             spring.damper = 1f;   // Adjust the damper value as needed
-            spring.targetPosition = -90;  // Adjust this value based on your door's hinge settings and orientation
+            spring.targetPosition = 90;  // Adjust this value based on your door's hinge settings and orientation
             hinge.spring = spring;
             hinge.useLimits = true;
 
             JointLimits limits = hinge.limits;
-            limits.min = -90;  // Adjust this value based on your door's hinge settings
+            limits.min = 90;  // Adjust this value based on your door's hinge settings
             limits.max = 0;    // Adjust this value based on your door's hinge settings
             hinge.limits = limits;
 
