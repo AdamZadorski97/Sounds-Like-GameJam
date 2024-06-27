@@ -21,7 +21,7 @@ namespace BNG
         float initialLockPosition;
 
         HingeJoint hinge;
-        Rigidbody rigid;
+      public  Rigidbody rigid;
         bool playedOpenSound = false;
         bool readyToPlayCloseSound = false;
 
@@ -40,12 +40,13 @@ namespace BNG
         void Start()
         {
             hinge = GetComponent<HingeJoint>();
-            rigid = GetComponent<Rigidbody>();
+       //     rigid = GetComponent<Rigidbody>();
 
             if (DoorLockTransform)
             {
                 initialLockPosition = DoorLockTransform.transform.localPosition.x;
             }
+            LockDoor();
         }
 
         void Update()
@@ -105,7 +106,7 @@ namespace BNG
                 handleLocked = DegreesTurned < DegreesTurnToOpen;
             }
 
-            if (angle < 0.02f && (handleLocked || DoorIsLocked))
+            if (DoorIsLocked)
             {
                 if (rigid.collisionDetectionMode == CollisionDetectionMode.Continuous || rigid.collisionDetectionMode == CollisionDetectionMode.ContinuousDynamic)
                 {
@@ -113,15 +114,6 @@ namespace BNG
                 }
 
                 rigid.isKinematic = true;
-            }
-            else
-            {
-                if (rigid.collisionDetectionMode == CollisionDetectionMode.ContinuousSpeculative)
-                {
-                    rigid.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
-                }
-
-                rigid.isKinematic = false;
             }
         }
 
@@ -136,6 +128,8 @@ namespace BNG
 
         public void OpenDoor()
         {
+            rigid.isKinematic = false;
+
             Debug.Log("Open door");
             if (!playedOpenSound)
             {
@@ -156,7 +150,7 @@ namespace BNG
             limits.max = -90;    // Adjust this value based on your door's hinge settings
             hinge.limits = limits;
 
-            rigid.isKinematic = false;
+          
         }
 
         public void CloseDoor()
@@ -188,8 +182,18 @@ namespace BNG
 
             rigid.isKinematic = true;
         }
+
+
+        public void LockDoor()
+        {
+            rigid.isKinematic = true;
+            DoorIsLocked = false;
+        }
         public void UnlockDoor()
         {
+            rigid.isKinematic = false;
+            rigid.AddExplosionForce(1000, PlayerController.Instance.transform.position, 100);
+          
             DoorIsLocked = false;
         }
     }
