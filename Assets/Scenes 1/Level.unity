@@ -63571,7 +63571,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 652563404}
         m_TargetAssemblyTypeName: BNG.DoorHelper, Assembly-CSharp
-        m_MethodName: OpenDoor
+        m_MethodName: LockDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63581,21 +63581,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 652563404}
-        m_TargetAssemblyTypeName: BNG.DoorHelper, Assembly-CSharp
-        m_MethodName: OpenDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 652563404}
-        m_TargetAssemblyTypeName: BNG.DoorHelper, Assembly-CSharp
-        m_MethodName: OpenDoor
+      - m_Target: {fileID: 1439893414}
+        m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
+        m_MethodName: PlayAudio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63694,7 +63682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a519851232250e64987ca2a1cfee2b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: c124e35ad4fb14b4892b03f4d7e94a5d, type: 3}
+  clip: {fileID: 8300000, guid: 25e51b5e44c2f96438ed832ca9fea35c, type: 3}
   playOnlyOneTime: 0
   dialogClips: []
 --- !u!43 &1444221470
