@@ -463,9 +463,9 @@ MonoBehaviour:
   GrabPhysics: 4
   GrabMechanic: 1
   GrabSpeed: 10
-  RemoteGrabbable: 0
+  RemoteGrabbable: 1
   RemoteGrabMechanic: 0
-  RemoteGrabDistance: 1
+  RemoteGrabDistance: 10
   ThrowForceMultiplier: 1.5
   ThrowForceMultiplierAngular: 1.125
   BreakDistance: 1.5
