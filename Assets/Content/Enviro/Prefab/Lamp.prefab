@@ -112,7 +112,7 @@ MonoBehaviour:
   flickerVolumetricLightIntensity: 1
   flickerColor: {r: 1, g: 1, b: 1, a: 1}
   player: {fileID: 0}
-  maxDistance: 15
+  maxDistance: 4
 --- !u!1 &4943626551035037520
 GameObject:
   m_ObjectHideFlags: 0

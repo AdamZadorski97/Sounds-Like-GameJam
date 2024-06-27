@@ -188,5 +188,9 @@ namespace BNG
 
             rigid.isKinematic = true;
         }
+        public void UnlockDoor()
+        {
+            DoorIsLocked = false;
+        }
     }
 }
