@@ -78,6 +78,7 @@ Material:
     - _Blend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Str: 1
     m_Colors:
     - _Tile: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
