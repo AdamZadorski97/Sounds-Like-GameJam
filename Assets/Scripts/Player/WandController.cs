@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ public class WandController : MonoBehaviour
     private bool isGrabbed;
     [SerializeField] private List<string> noteSequence = new List<string>(); // List to store the sequence of notes played
     public List<SpellCombo> spellCombos; // List of special combo spells
-
+    public GameObject shieldPrefab;
     void Start()
     {
         // Get the AudioSource component attached to the wand object
@@ -135,9 +136,10 @@ public class WandController : MonoBehaviour
     // Invoke the spell corresponding to the detected combo
     private void InvokeSpell(string spellName)
     {
-        Debug.Log($"Spell combo detected: {spellName}");
-        // Add your custom spell invocation logic here based on the spell name
-        // Example: if (spellName == "Fireball") { CastFireball(); }
+        if (spellName == "SpawnShield")
+        {
+            SpawnShield();
+        }
     }
 
     // Check if the "A" button on the Oculus controller is pressed
@@ -157,5 +159,14 @@ public class WandController : MonoBehaviour
         }
 
         return isPressed;
+    }
+
+
+
+    public void SpawnShield()
+    {
+        GameObject spawnedShield = Instantiate(shieldPrefab);
+        spawnedShield.transform.localScale = Vector3.zero;
+        spawnedShield.transform.DOScale(Vector3.one, 0.5f);
     }
 }
