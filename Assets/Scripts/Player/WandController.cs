@@ -1,4 +1,5 @@
 using DG.Tweening;
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -126,6 +127,7 @@ public class WandController : MonoBehaviour
         {
             if (combinedNotes.EndsWith(combo.combo))
             {
+                Debug.Log("Spawn Spell" + combo.spellName);
                 wandEffectCastSpell.Play();
                 // If a match is found, invoke the corresponding method
                 InvokeSpell(combo.spellName);

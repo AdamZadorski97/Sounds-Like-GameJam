@@ -191,6 +191,7 @@ namespace BNG
         }
         public void UnlockDoor()
         {
+            Debug.Log("UnlockDoor");
             rigid.isKinematic = false;
             rigid.AddExplosionForce(1000, PlayerController.Instance.transform.position, 100);
           

@@ -18,8 +18,10 @@ public class CheckSpell : MonoBehaviour
 
     public void UseSpell(string _spellName)
     {
+      
         if(spellName == _spellName)
         {
+            Debug.Log("UseSpell");
             OnUseSpell.Invoke();
         }
        
