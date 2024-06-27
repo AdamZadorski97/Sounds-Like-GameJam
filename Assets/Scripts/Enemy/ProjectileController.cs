@@ -43,6 +43,7 @@ public class ProjectileController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             PlayerController.Instance.TakeDamage(1);
+            Destroy(gameObject);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
