@@ -16759,20 +16759,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wand
       objectReference: {fileID: 0}
-    - target: {fileID: 3694529370350168593, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+    - target: {fileID: 3836000085512158003, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
         type: 3}
-      propertyPath: spellCombos.Array.size
-      value: 2
+      propertyPath: m_LocalScale.x
+      value: 0.03
       objectReference: {fileID: 0}
-    - target: {fileID: 3694529370350168593, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+    - target: {fileID: 3836000085512158003, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
         type: 3}
-      propertyPath: spellCombos.Array.data[1].combo
-      value: CBD
+      propertyPath: m_LocalScale.y
+      value: 0.03
       objectReference: {fileID: 0}
-    - target: {fileID: 3694529370350168593, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+    - target: {fileID: 3836000085512158003, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
         type: 3}
-      propertyPath: spellCombos.Array.data[1].spellName
-      value: Crush
+      propertyPath: m_LocalScale.z
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711742842206571433, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711742842206571433, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Vector4f.m_Array.Array.data[0].m_Value.z
+      value: 0.020421028
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748054542049242049, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748054542049242049, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6748054542049242049, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6988756161354111232, guid: b6fd6b933b2c12f4b872e5eb97e5c307,
         type: 3}
@@ -18116,6 +18141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &161485065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18475,6 +18501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &199797676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20380,6 +20407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &331820584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35940,6 +35968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &660080061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38263,6 +38292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &783228910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43611,6 +43641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &888898325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49983,6 +50014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1001493821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50294,6 +50326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1024133045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59403,6 +59436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1190710490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59756,6 +59790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1216923662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61665,6 +61700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1324677129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63346,6 +63382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1381693733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64301,6 +64338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: c124e35ad4fb14b4892b03f4d7e94a5d, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!43 &1444221470
 Mesh:
   m_ObjectHideFlags: 0
@@ -65279,6 +65317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1517873729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68470,6 +68509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1798637880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69180,6 +69220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1850759417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70523,6 +70564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1907781127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71528,6 +71570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1929038443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72167,6 +72210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1966549146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72489,6 +72533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1972442337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73443,6 +73488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &1996290751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76222,6 +76268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &2114367197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76592,6 +76639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &2125627504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76850,6 +76898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 34ae297514071684f86e3bc6c32dc37c, type: 3}
   playOnlyOneTime: 0
+  dialogClips: []
 --- !u!114 &2146309992
 MonoBehaviour:
   m_ObjectHideFlags: 0

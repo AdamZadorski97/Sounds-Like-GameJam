@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio; // Import the Audio namespace
+using UnityEngine.VFX;
 using UnityEngine.XR; // Import the XR namespace
 
 [Serializable]
@@ -29,6 +30,8 @@ public class WandController : MonoBehaviour
     [SerializeField] private List<string> noteSequence = new List<string>(); // List to store the sequence of notes played
     public List<SpellCombo> spellCombos; // List of special combo spells
     public GameObject shieldPrefab;
+    public VisualEffect wandEffectCastSpell;
+    public VisualEffect wandPlayNote;
     void Start()
     {
         // Get the AudioSource component attached to the wand object
@@ -93,7 +96,7 @@ public class WandController : MonoBehaviour
     {
         audioSource.clip = pianoNotes[index];
         audioSource.Play();
-
+        wandPlayNote.Play();
         // Adjust the volume of the AudioMixer
         float volume = Mathf.Lerp(minVolume, maxVolume, (float)index / (pianoNotes.Length - 1));
         audioMixer.SetFloat("Volume", volume);
@@ -123,6 +126,7 @@ public class WandController : MonoBehaviour
         {
             if (combinedNotes.EndsWith(combo.combo))
             {
+                wandEffectCastSpell.Play();
                 // If a match is found, invoke the corresponding method
                 InvokeSpell(combo.spellName);
                 PlayerController.Instance.checkSpell.UseSpell(combo.spellName);
