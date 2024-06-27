@@ -11,6 +11,8 @@ public struct DialogClip
 
 public class PlayAudioClip : MonoBehaviour
 {
+    [SerializeField]
+    private bool playOnStart;
     // Reference to the AudioSource component
     private AudioSource audioSource;
     [SerializeField] private AudioClip clip;
@@ -26,10 +28,12 @@ public class PlayAudioClip : MonoBehaviour
     {
         // Get the AudioSource component attached to the same GameObject
         audioSource = GetComponent<AudioSource>();
+        if (playOnStart) PlayAudio();
     }
 
     public void PlayAudio()
     {
+        Debug.Log("Play audio" + clip.name);
         // Check if the audio has been played before
         if (!hasPlayed)
         {
