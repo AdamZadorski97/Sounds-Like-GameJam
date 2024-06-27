@@ -139,7 +139,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.218, y: -0.01, z: 0.0068}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6988756161354111232}
@@ -165,10 +165,13 @@ VisualEffect:
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.1, y: 0.1, z: 0.1}
+        m_Name: SCALE
+        m_Overridden: 1
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 1, y: 0.33732823, z: 0, w: 1}
+      - m_Value: {x: 1, y: 0, z: 0.020421028, w: 1}
         m_Name: Color
         m_Overridden: 1
     m_Uint:
@@ -815,9 +818,9 @@ MonoBehaviour:
   wandText: {fileID: 5835272047186137726}
   noteSequence: []
   spellCombos:
-  - combo: CCD
-    spellName: OpenDoor
   - combo: CBD
+    spellName: OpenDoor
+  - combo: CCC
     spellName: Crush
   shieldPrefab: {fileID: 0}
   wandEffectCastSpell: {fileID: 8858767332931251745}
@@ -849,9 +852,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3694529370350168593}
-        m_TargetAssemblyTypeName: WandController, Assembly-CSharp
-        m_MethodName: SwitchGrabbed
+      - m_Target: {fileID: 3333294109524664741}
+        m_TargetAssemblyTypeName: PlayAudioClip, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -860,6 +875,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   onRelease:
     m_PersistentCalls:
@@ -936,6 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a519851232250e64987ca2a1cfee2b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playOnStart: 0
   clip: {fileID: 0}
   playOnlyOneTime: 1
   dialogClips: []
@@ -1023,7 +1051,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.218, y: -0.01, z: 0.0068}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6988756161354111232}
@@ -1049,7 +1077,10 @@ VisualEffect:
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 0.2, y: 0.2, z: 0.2}
+        m_Name: SCALE
+        m_Overridden: 1
     m_Vector4f:
       m_Array:
       - m_Value: {x: 0, y: 0.8384061, z: 1, w: 1}
