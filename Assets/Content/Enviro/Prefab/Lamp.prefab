@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7344778471138298557}
+  - component: {fileID: 7839172393540162420}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -34,6 +35,84 @@ Transform:
   - {fileID: 1055448517390402275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7839172393540162420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794647478223767664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ad9a3cb1f5a454bb282a5ecbc8e938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _light: {fileID: 7621865073471334071}
+  minTimeToNextFlicker: 0.5
+  maxTimeToNextFlicker: 2
+  minFlickerDuration: 0.05
+  maxFlickerDuration: 0.2
+  minOnDuration: 0.5
+  maxOnDuration: 2
+  minOffDuration: 0.5
+  maxOffDuration: 2
+  turnOnCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  turnOffCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  flickerLightIntensity: 1
+  lampMaterial: {fileID: 7495332695269886529}
+  materialProperty: _EmissionColor
+  materialFlickerIntensity: 1
+  volumetricLightBeamSD: {fileID: 481495236379561621}
+  flickerVolumetricLightIntensity: 1
+  flickerColor: {r: 1, g: 1, b: 1, a: 1}
+  player: {fileID: 0}
+  maxDistance: 15
 --- !u!1 &4943626551035037520
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2928721548127451960}
-  - component: {fileID: 4395380371243114336}
+  - component: {fileID: 481495236379561621}
   m_Layer: 0
   m_Name: Volumetric Light Beam HD
   m_TagString: Untagged
@@ -66,7 +145,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7344778471138298557}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &4395380371243114336
+--- !u!114 &481495236379561621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,14 +154,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943626551035037520}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92b0a6142b2b0b449a62558873544363, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b69c542c9a8f4f44a3123e3fa103d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pluginVersion: 20200
-  m_ColorFromLight: 1
-  m_ColorMode: 1
-  m_ColorFlat: {r: 1, g: 1, b: 1, a: 1}
-  m_ColorGradient:
+  colorFromLight: 1
+  colorMode: 1
+  color: {r: 1, g: 1, b: 1, a: 1}
+  colorGradient:
     serializedVersion: 2
     key0: {r: 0.9811321, g: 0.88272136, b: 0.49056593, a: 1}
     key1: {r: 1, g: 1, b: 1, a: 0.45882353}
@@ -112,31 +191,48 @@ MonoBehaviour:
     m_ColorSpace: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  m_BlendingMode: 0
-  m_Intensity: 0.1
-  m_IntensityMultiplier: 1
-  m_HDRPExposureWeight: 0
-  m_SpotAngle: 71.4
-  m_SpotAngleMultiplier: 1
-  m_ConeRadiusStart: 0.1
-  m_Scalable: 1
-  m_FallOffStart: 0
-  m_FallOffEnd: 3
-  m_FallOffEndMultiplier: 1
-  m_AttenuationEquation: 1
-  m_SideSoftness: 1
-  m_RaymarchingQualityID: 2
-  m_JitteringFactor: 0
-  m_JitteringFrameRate: 60
-  m_JitteringLerpRange:
-    m_MinValue: 0
-    m_MaxValue: 0.33
-  m_NoiseMode: 0
-  m_NoiseIntensity: 0.5
-  m_NoiseScaleUseGlobal: 1
-  m_NoiseScaleLocal: 0.5
-  m_NoiseVelocityUseGlobal: 1
-  m_NoiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
+  intensityFromLight: 1
+  intensityModeAdvanced: 0
+  intensityInside: 0.1
+  intensityOutside: 0.1
+  intensityMultiplier: 1
+  hdrpExposureWeight: 0
+  blendingMode: 0
+  spotAngleFromLight: 1
+  spotAngle: 35
+  spotAngleMultiplier: 1
+  coneRadiusStart: 0.1
+  shaderAccuracy: 0
+  geomMeshType: 0
+  geomCustomSides: 18
+  geomCustomSegments: 5
+  skewingLocalForwardDirection: {x: 0, y: 0, z: 1}
+  clippingPlaneTransform: {fileID: 0}
+  geomCap: 0
+  attenuationEquation: 1
+  attenuationCustomBlending: 0.5
+  fallOffStart: 0
+  fallOffEnd: 3
+  fallOffEndFromLight: 1
+  fallOffEndMultiplier: 1
+  depthBlendDistance: 2
+  cameraClippingDistance: 0.5
+  glareFrontal: 0.5
+  glareBehind: 0.5
+  fresnelPow: 8
+  noiseMode: 0
+  noiseIntensity: 0.5
+  noiseScaleUseGlobal: 1
+  noiseScaleLocal: 0.5
+  noiseVelocityUseGlobal: 1
+  noiseVelocityLocal: {x: 0.07, y: 0.18, z: 0.05}
+  dimensions: 0
+  tiltFactor: {x: 0, y: 0}
+  _TrackChangesDuringPlaytime: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  _FadeOutBegin: -150
+  _FadeOutEnd: -200
 --- !u!1 &6224913291676586097
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +424,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb8710195f0a23479a46894e18eb01f, type: 3}
+--- !u!23 &7495332695269886529 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6cb8710195f0a23479a46894e18eb01f,
+    type: 3}
+  m_PrefabInstance: {fileID: 9206854065152874181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8669404558624108846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6cb8710195f0a23479a46894e18eb01f,
