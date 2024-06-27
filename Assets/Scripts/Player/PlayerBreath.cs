@@ -50,7 +50,7 @@ public class PlayerBreath : MonoBehaviour
         {
             yield return new WaitForSeconds(BreathSpeed);
             AudioSource.Play();
-            BreathAgro.Invoke();.
+            BreathAgro.Invoke();
         }
     }
 
