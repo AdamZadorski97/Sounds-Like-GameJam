@@ -410,10 +410,11 @@ MonoBehaviour:
   DegreesTurned: 0
   DegreesTurnToOpen: 15
   DoorLockTransform: {fileID: 543473002822222680}
+  rigid: {fileID: 2871499900650828526}
   AngularVelocitySnapDoor: 0.95
   angle: 0
   AngularVelocity: 0
-  DoorIsLocked: 0
+  DoorIsLocked: 1
   lockPos: 0
 --- !u!1 &2871499900991950829
 GameObject:
@@ -444,11 +445,12 @@ Transform:
   m_GameObject: {fileID: 2871499900991950829}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1762, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2871499901864011444}
+  - {fileID: 6074781904623714839}
   m_Father: {fileID: 2871499901352358221}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2871499900991950825
@@ -706,7 +708,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2871499900650828515}
-  - {fileID: 6074781904623714839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2871499901864011435
@@ -1098,22 +1099,22 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2871499901593167896}
+    m_TransformParent: {fileID: 2871499900991950830}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.166
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.065
+      value: -0.039
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
@@ -1123,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8c1705454fd6bc84394a8c9f9250ad4c,
         type: 3}
