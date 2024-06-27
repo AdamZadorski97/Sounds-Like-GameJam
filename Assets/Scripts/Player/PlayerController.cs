@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damageAmount)
     {
-        audioSource.PlayOneShot(getDamageClip);
+        audioSource.PlayOneShot(getDamageClip, 0.1f);
         if (currentHealthIndex >= 0)
         {
             healthImages[currentHealthIndex].gameObject.SetActive(false);
@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
         sequence.Append(gameOverScreen.DOFade(1, 0.8f)); // Then fade
         sequence.Play();
         StartCoroutine(LerpLookAt(vector3));
-        audioSource.PlayOneShot(screamClip, 1);
+        audioSource.PlayOneShot(screamClip, 0.1f);
     }
 
     private IEnumerator LerpLookAt(Vector3 targetPosition)
